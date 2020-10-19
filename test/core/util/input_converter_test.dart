@@ -20,5 +20,25 @@ void main() {
       // assert
       expect(result, Right(123));
     });
+
+    test('should return a Failure when result is not an integer', () async {
+      // arrange
+      final str = 'abc';
+      // act
+      final result = inputConverter.stringToUnsignedInteger(str);
+      // assert
+      expect(result, Left(InvalidInputFailure()));
+    });
+
+    test('should return a Failure when result is a negative integer', () async {
+      // arrange
+      final str = '-123';
+      // act
+      final result = inputConverter.stringToUnsignedInteger(str);
+      // assert
+      expect(result, Left(InvalidInputFailure()));
+    });
   });
 }
+
+// остановился на 4:47:30
